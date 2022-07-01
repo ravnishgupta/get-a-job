@@ -27,15 +27,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <section aria-labelledby="talents-heading" class="pt-6 pb-24">
-        <h2 id="talents-heading" class="sr-only">Projects</h2>
-
-           <div class="projects-apply" id="accordion-open" data-accordion="open">
-            <ProjectList projects={projects} title="Projects" />
-              
-        </div>
-      </section>
-    </main>
