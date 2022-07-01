@@ -6,7 +6,7 @@ type User {
     _id: ID
     username: String
     email: String
-    applications: [Projects]
+    applications: String
 }
 
 type Projects {
