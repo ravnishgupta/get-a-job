@@ -1,11 +1,12 @@
 
 import './App.css';
+import Nav  from './components/Nav';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
 function App() {
   return (
     <div className="App">
-     
-      <h1 className="text-3xl font-bold underline">Hello Job Search</h1>
+      <Nav></Nav>
     </div>
   );
 }
