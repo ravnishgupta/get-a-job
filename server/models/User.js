@@ -8,7 +8,13 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
-    username: {
+    
+    firstName: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    lastName: {
       type: String,
       required: true,
       unique: true,
@@ -26,7 +32,19 @@ const userSchema = new Schema(
     applications: {
       type: String,
       required: false
-    }
+    },
+    availableNow: {
+      type: Boolean,
+      required: true
+    },
+    hourlyRate: {
+      type: Number,
+      required: true
+    },
+    gitHub: {
+      type: String,
+      required: true
+    },
   },
   // set this to use virtual below
   {
