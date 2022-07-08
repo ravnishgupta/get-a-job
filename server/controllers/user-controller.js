@@ -4,7 +4,7 @@ const { signToken } = require('../utils/auth');
 module.exports = {
     async getSingleUser({ user = null, params}, res) {
         const foundUser = await User.findOne({
-            $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
+            $or: [{ _id: user ? user._id : params.id }, { email: params.email }],
         });
         if (!foundUser) {
             return res.status(400).json({ message: 'Cannot find a user with this id!' });
@@ -23,7 +23,7 @@ module.exports = {
     },
 
     async login({ body }, res) {
-        const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
+        const user = await User.findOne({ $or: [{ email: body.email }, { email: body.email }] });
         if (!user) {
           return res.status(400).json({ message: "Can't find this user" });
         }
