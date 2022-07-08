@@ -4,23 +4,25 @@ const typeDefs = gql`
 
 type User {
     _id: ID
-    email: String
+    firstName: String!
+    lastName: String!
+    email: String!
     applications: String
-    password: String
-    availableNow: Boolean
-    hourlyRate: Number
-    github: String
+    password: String!
+    availableNow: Boolean!
+    hourlyRate: Float!
+    github: String!
 }
 
 type Projects {
     _id : ID
-    description: String
-    title: String
+    description: String!
+    title: String!
 }
 
 type Skills {
   _id : ID
-  description: String
+  description: String!
 }
 
 type Auth {
@@ -35,7 +37,7 @@ type Query {
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(email: String!, password: String!): Auth
-    saveProject(description: String!, title: String!): Auth
+    saveProject(description: String!, title: String!): User
   }
   
   `
