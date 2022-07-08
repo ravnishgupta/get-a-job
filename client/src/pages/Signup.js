@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Signup = () => {
-    const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+    const [formState, setFormState] = useState({ email: '', password: '' });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
