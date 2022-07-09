@@ -27,6 +27,7 @@ const resolvers = {
     },
  
     login: async (parent, { email, password }) => {
+      console.log("Here");
       const user = await User.findOne({ email });
 
       if (!user) {
