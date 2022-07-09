@@ -9,5 +9,7 @@ const skillsSchema = new Schema({
   }
 });
 
+const Skills = model('Skills', skillsSchema);
 
-module.exports = skillsSchema;
+
+module.exports = Skills;

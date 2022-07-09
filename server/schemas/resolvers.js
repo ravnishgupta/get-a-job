@@ -8,7 +8,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          //.populate('savedBooks')
+          .populate('applications')
 
         return userData;
       }
@@ -40,11 +40,22 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    saveProject: async (parent, { projectId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { applications: projectId } },
+          { new: true }
+        ).populate('applications');
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
     }
-    
   }
-  
+    
 }
-
-
+  
   module.exports = resolvers;

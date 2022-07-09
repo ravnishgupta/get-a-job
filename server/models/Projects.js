@@ -23,7 +23,13 @@ const projectSchema = new Schema({
     type: Number,
     required: true
   },
-  skills: [skillSchema]
+  skills: 
+          [
+            {
+              type: Schema.Types.ObjectId,
+              ref: 'Skills'
+            }
+          ]
 });
 
 const Projects = model('Projects', projectSchema);

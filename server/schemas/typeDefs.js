@@ -7,17 +7,20 @@ type User {
     firstName: String!
     lastName: String!
     email: String!
-    applications: String
     password: String!
     availableNow: Boolean!
     hourlyRate: Float!
     github: String!
+    applications: [Projects]
+
 }
 
 type Projects {
     _id : ID
     description: String!
     title: String!
+    payPerHour: Float
+    Skills: [Skills]
 }
 
 type Skills {
@@ -37,7 +40,7 @@ type Query {
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(email: String!, password: String!): Auth
-    saveProject(description: String!, title: String!): User
+    saveProject(projectId: ID!): User
   }
   
   `
