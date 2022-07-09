@@ -29,10 +29,13 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    applications: {
-      type: String,
-      required: false
-    },
+    applications: 
+          [
+            {
+              type: Schema.Types.ObjectId,
+              ref: 'Projects'
+            }
+          ],
     availableNow: {
       type: Boolean,
       required: true
