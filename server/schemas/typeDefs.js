@@ -15,6 +15,16 @@ type User {
 
 }
 
+input UserInput{
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  availableNow: Boolean!
+  hourlyRate: Float!
+  gitHub: String!
+}
+
 type Projects {
     _id : ID
     description: String!
@@ -39,7 +49,7 @@ type Query {
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(email: String!, password: String!): Auth
+    addUser(input: UserInput!): Auth
     saveProject(projectId: ID!): User
   }
   
