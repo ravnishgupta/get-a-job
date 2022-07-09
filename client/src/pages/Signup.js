@@ -12,6 +12,33 @@ const Signup = () => {
     });
   };
 
+  /* To add user via graphql
+  mutation AddUser($input: UserInput!) {
+  addUser(input: $input) {
+    token
+    user {
+      firstName
+      lastName
+      email
+    }
+  }
+}
+
+Variables
+{
+  "input": {
+    "firstName": "Megha",
+    "lastName": "Raj",
+    "email": "m@m.com",
+    "password": "test",
+    "availableNow": true,
+    "hourlyRate" : 200,
+    "gitHub": "meghak@github.com"
+  }
+}
+
+  */
+
  
   const handleFormSubmit = async (event) => {
     event.preventDefault();
