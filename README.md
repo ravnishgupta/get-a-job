@@ -25,3 +25,49 @@ This view will display a project and its applicants.
 Talent View<p>
 Shows all available candidates with options to contact and view resumes if any uploaded.
 
+## Technologies Used
+- `bcrypt`
+- `@tailwindcss/aspect-ratio`
+- `@tailwindcss/forms`
+- `connect-session-sequelize`
+- `dotenv`
+- `express`
+- `express-handlebars`
+- `express-session`
+- `flowbite`
+- `multer`
+- `mysql2`
+- `sequelize`
+- `tailwindcss`
+- `mongoose`
+- `apollo`
+- `node`
+- `react`
+- `graphql`
+
+
+## User Story
+```
+AS A developer who likes working through collaborations
+I WANT a job finder style site
+SO THAT I can publish my professional information and look for jobs
+```
+
+## Contributors
+- Megha Kulathattil: [github.com/meghark](https://github.com/meghark)
+- Natalie Sleem:[github.com/nataliesleem](https://github.com/nataliesleem)
+- Ravnish Gupta: [github.com/ravnishgupta](https://github.com/ravnishgupta)
+- Nitish Doss: [github.com/nitishd22](https://github.com/nitishd22)
+
+## Future State
+- Companies can express their interest to hire certain candidates
+- Ability for candidates to upload their photos
+- Integrated collaboration technologies, e.g. Slack, Messenger, etc
+- Monetization capabilities by providing tiered subscriptions 
+
+## Screenshots 
+Deployed application : 
+
+
+
+![Screenshot of the application](./public/images/Tech%20Up%20Work.png)
