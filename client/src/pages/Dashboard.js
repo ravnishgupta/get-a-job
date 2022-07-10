@@ -1,7 +1,7 @@
 import React from 'react';
 // Import hooks for mutation and query
 import { useMutation, useQuery } from '@apollo/client';
-// Import mutation to remove book
+// Import mutation to withdraw application
 import { WITHDRAW } from '../utils/mutations';
 // Import query to get the current user.
 import { QUERY_ME } from '../utils/queries';

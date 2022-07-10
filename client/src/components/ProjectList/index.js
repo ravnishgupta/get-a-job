@@ -12,7 +12,7 @@ const ProjectsList = ({ projects, title }) => {
   const [savedProject] = useMutation(SAVE_PROJECT);
 
 
-  // create state to hold saved bookId values
+  // create state to hold saved projectId values
   const [savedJobIds, setsaveJobIds] = useState(getappliedJobIds());
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const ProjectsList = ({ projects, title }) => {
   });
 
 
-  // create function to handle saving a book to our database
+  // create function to handle saving a projectID to our database
   const handleSaveProject = async (projectId) => {
     
     // get token
@@ -31,12 +31,12 @@ const ProjectsList = ({ projects, title }) => {
     }
 
     try {
-       // Call saveBook graphQl api to save the selected book to user record.
+       // Call saveProject graphQl api to save the selected project to user record.
 
        await savedProject({
             variables: {  projectId: projectId }
         })
-      // if book successfully saves to user's account, save book id to state
+      // if project successfully saves to user's account, save project id to state
       await setsaveJobIds([...savedJobIds, projectId]);
     
     } catch (err) {

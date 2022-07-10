@@ -27,7 +27,7 @@ input UserInput{
 
 type Skills {
   _id : ID
-  description: String!
+  description: String
 }
 
 
