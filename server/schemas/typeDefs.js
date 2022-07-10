@@ -35,7 +35,7 @@ type Projects {
 
 type Skills {
   _id : ID
-  description: String!
+  description: String
 }
 
 type Auth {
@@ -46,6 +46,10 @@ type Auth {
 type Query {
     me: User
   }
+
+type Query {
+  getSkills: Skills
+}
 
   type Mutation {
     login(email: String!, password: String!): Auth
