@@ -6,7 +6,7 @@
         "password" : "kGjRfUNWUIRwfS_" ,
         "availableNow": true,
         "gitHub" : "https://www.github.com",
-        "hourlyRate": 100
+        "hourlyRate": "100"
 
     },
     { 
@@ -16,7 +16,7 @@
         "password" : "otK5YtXpcalD1cm",
         "availableNow": true,
         "gitHub" : "https://www.github.com",
-        "hourlyRate": 200
+        "hourlyRate": "200"
 
     },
     { 
@@ -26,7 +26,7 @@
         "password" : "AP3EUTRZoxzsiHn",
         "availableNow": false,
         "gitHub" : "https://www.github.com",
-        "hourlyRate": 300
+        "hourlyRate": "300"
     },
     { 
         "firstName" : "Elton", 
@@ -35,7 +35,7 @@
         "password" : "3dVgRgSQmrGLaQE",
         "availableNow": true,
         "gitHub" : "https://www.github.com",
-        "hourlyRate": 400
+        "hourlyRate": "400"
     },
     { 
         "firstName" : "Josua", 

@@ -41,7 +41,7 @@ const userSchema = new Schema(
       required: true
     },
     hourlyRate: {
-      type: Number,
+      type: String,
       required: true
     },
     gitHub: {
