@@ -5,10 +5,13 @@ export const QUERY_PROJECTS = gql`{
       _id
       description
       title
+      payPerHour
       skills{
         _id
         description
       }
+      startDate
+      endDate
   }
 }
 `;
@@ -31,6 +34,8 @@ export const QUERY_ME = gql`
         skills {
           description
         }
+        startDate
+        endDate
       }
     }
   }

@@ -37,6 +37,8 @@ type Projects {
     title: String 
     payPerHour: Float
     skills: [Skills]
+    startDate: String
+    endDate: String
 }
 
 

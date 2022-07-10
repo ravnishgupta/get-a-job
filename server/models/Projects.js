@@ -12,10 +12,10 @@ const projectSchema = new Schema({
     index:true
   },
   startDate: {
-    type: Date
+    type: String
   },
   endDate: {
-    type: Date
+    type: String
   },
   payPerHour: {
     type: Number,
