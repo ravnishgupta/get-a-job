@@ -2,6 +2,7 @@
 import './App.css';
 import Header from './components/Header';
 import Home  from './pages/Home';
+import Dashboard  from './pages/Dashboard';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
@@ -53,6 +54,10 @@ function App() {
             <Route
               path="/signup"
               element={<Signup />}
+            />
+             <Route
+              path="/dashboard"
+              element={<Dashboard />}
             />
           </Routes>
       
