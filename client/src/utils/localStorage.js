@@ -1,34 +1,34 @@
 
-// From local storage get the list of saved books.
-export const getSavedBookIds = () => {
-    const savedBookIds = localStorage.getItem('saved_books')
-      ? JSON.parse(localStorage.getItem('saved_books'))
+// From local storage get the list of applied jobs.
+export const getappliedJobIds = () => {
+    const appliedJobIds = localStorage.getItem('applied_jobs')
+      ? JSON.parse(localStorage.getItem('applied_jobs'))
       : [];
   
-    return savedBookIds;
+    return appliedJobIds;
   };
   
-  // Set list of saved books in local storage.
-  export const saveBookIds = (bookIdArr) => {
+  // Set list of applied job in local storage.
+  export const saveJobIds = (bookIdArr) => {
     if (bookIdArr.length) {
-      localStorage.setItem('saved_books', JSON.stringify(bookIdArr));
+      localStorage.setItem('applied_jobs', JSON.stringify(bookIdArr));
     } else {
-      localStorage.removeItem('saved_books');
+      localStorage.removeItem('applied_jobs');
     }
   };
   
-  // Remove a book from storage.
-  export const removeBookId = (bookId) => {
-    const savedBookIds = localStorage.getItem('saved_books')
-      ? JSON.parse(localStorage.getItem('saved_books'))
+  // Remove a job from storage.
+  export const removeProjectId = (projectId) => {
+    const savedProjectIds = localStorage.getItem('applied_jobs')
+      ? JSON.parse(localStorage.getItem('applied_jobs'))
       : null;
   
-    if (!savedBookIds) {
+    if (!savedProjectIds) {
       return false;
     }
   
-    const updatedSavedBookIds = savedBookIds?.filter((savedBookId) => savedBookId !== bookId);
-    localStorage.setItem('saved_books', JSON.stringify(updatedSavedBookIds));
+    const updatedProjectIds = savedProjectIds?.filter((savedProjectId) => savedProjectId !== projectId);
+    localStorage.setItem('applied_jobs', JSON.stringify(updatedProjectIds));
   
     return true;
   };

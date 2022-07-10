@@ -7,8 +7,12 @@ import { WITHDRAW } from '../utils/mutations';
 import { QUERY_ME } from '../utils/queries';
 import { Accordion } from "flowbite-react";
 import SkillsList from '../components/SkillList';
+import { removeProjectId } from '../utils/localStorage';
 
 const Home = () => {
+
+  // Create withdraw function using mutation.
+  const [withdraw] = useMutation(WITHDRAW);
   // use useQuery hook to make query request
   const { loading, data } = useQuery(QUERY_ME);
  // Set userData with logged in users profile.
@@ -43,6 +47,28 @@ const Home = () => {
   }]
   userData.applications = prSample;
 
+  const handleWithdrawJob = async (projectId) => {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    
+    // Perform action only if token is valid.
+    if (!token) {
+      return false;
+    }
+
+    try {
+
+      // Call withdraw application graphQl API.
+      await withdraw({
+        variables: { projectId: projectId}
+      })
+
+      // upon success, remove project's id from localStorage
+      removeProjectId(projectId);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="bg-white">
     <header >
@@ -62,7 +88,7 @@ const Home = () => {
                 <div>
                 <h2>
                     {userData.applications.length
-                        ? `Viewing ${userData.applications.length} saved ${userData.applications.length === 1 ? 'application' : 'applications'}:`
+                        ? `Viewing ${userData.applications.length} job ${userData.applications.length === 1 ? 'application' : 'applications'}:`
                         : 'You have no active applications!'}
                  </h2>
                 <Accordion className="projects-apply" alwaysOpen={true}>
@@ -83,7 +109,8 @@ const Home = () => {
                          <SkillsList skills={project.skills} title="Skills" />
                         <button data-id={project._id} type="click"  class="apply-button py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white 
                                                           bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 
-                                                          focus:ring-offset-2 focus:ring-indigo-500">Withdraw</button>  
+                                                          focus:ring-offset-2 focus:ring-indigo-500"
+                                                          onClick={() => handleWithdrawJob(project._id)}>Withdraw</button>  
                      </Accordion.Content>
                     </Accordion.Panel>
                   ))}
