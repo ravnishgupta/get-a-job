@@ -17,11 +17,13 @@ export const QUERY_PROJECTS = gql`{
 `;
 
 export const GET_SKILLS = gql `
-  query getSkills {
+{  
+  getSkills {
       _id
       description
   }
-`
+}
+`;
 
 export const QUERY_ME = gql`
   {

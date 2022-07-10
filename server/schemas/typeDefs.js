@@ -50,11 +50,10 @@ type Auth {
 type Query {
     me: User
     projects: [Projects]
+    getSkills: [Skills]
   }
 
-type Query {
-  getSkills: Skills
-}
+
 
   type Mutation {
     login(email: String!, password: String!): Auth
