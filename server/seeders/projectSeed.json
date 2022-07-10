@@ -1,0 +1,50 @@
+[
+    {
+        "description" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores dolores quam tempora quisquam voluptate temporibus laborum quod excepturi incidunt laboriosam!", 
+        "title" : "React Project",
+        "payPerHour": 100,
+        "startDate":"07-31-2022",
+        "endDate": "09-30-2022",
+        "skills": [{"_id": "1234567890ab"},{"_id": "1234567890ac"},{"_id": "1234567890ah"}]
+
+    },
+
+    { 
+        "description" : "This is the best paying project", 
+        "title" : "$600 an hour!",
+        "payPerHour": 600,
+        "startDate":"08-15-2022",
+        "endDate": "11-30-2022"
+
+    },
+    { 
+        "description" : "MERN project that pays $200 an hour", 
+        "title" : "MERN project",
+        "payPerHour": 200,
+        "startDate":"12-15-2022",
+        "endDate": "11-30-2023"
+    },
+    {
+        "description" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores dolores quam tempora quisquam voluptate temporibus laborum quod excepturi incidunt laboriosam!", 
+        "title" : "Software Infrastructure- Cloud",
+        "payPerHour": 110,
+        "startDate":"07-20-2022",
+        "endDate": "09-30-2022",
+        "skills": [{"_id": "1234567890ad"},{"_id": "1234567890ag"}]
+    },
+    {
+        "description" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores dolores quam tempora quisquam voluptate temporibus laborum quod excepturi incidunt laboriosam!", 
+        "title" : "Full Stack JS'",
+        "payPerHour": 130,
+        "startDate":"07-20-2022",
+        "endDate": "10-30-2022",
+        "skills": [{"_id": "1234567890af"},{"_id": "1234567890ah"},{"_id": "1234567890ae"},{"_id": "1234567890ac"}, {"_id": "1234567890ab"} ]
+    },
+    {
+        "description" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores dolores quam tempora quisquam voluptate temporibus laborum quod excepturi incidunt laboriosam!", 
+        "title" : "Java Project'",
+        "payPerHour": 70,
+        "startDate":"07-20-2022",
+        "endDate": "10-30-2022"
+    }
+]

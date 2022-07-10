@@ -1,14 +1,15 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-//initial version of model
-
-// import schema from Book.js
-const projectSchema = require('./Projects');
-
 const userSchema = new Schema(
   {
-    username: {
+    
+    firstName: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    lastName: {
       type: String,
       required: true,
       unique: true,
@@ -23,7 +24,25 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    applications: [projectSchema],
+    applications: 
+          [
+            {
+              type: Schema.Types.ObjectId,
+              ref: 'Projects'
+            }
+          ],
+    availableNow: {
+      type: Boolean,
+      required: true
+    },
+    hourlyRate: {
+      type: String,
+      required: true
+    },
+    gitHub: {
+      type: String,
+      required: true
+    },
   },
   // set this to use virtual below
   {
@@ -48,10 +67,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-// when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
-userSchema.virtual('applicationCount').get(function () {
-  return this.applications.length;
-});
+
 
 const User = model('User', userSchema);
 

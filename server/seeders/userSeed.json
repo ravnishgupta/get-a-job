@@ -1,0 +1,50 @@
+[
+    { 
+        "firstName" : "Molly48", 
+        "lastName" : "Waters", 
+        "email" : "Molly48_Waters59@hotmail.com", 
+        "password" : "kGjRfUNWUIRwfS_" ,
+        "availableNow": true,
+        "gitHub" : "https://www.github.com",
+        "hourlyRate": "100"
+
+    },
+    { 
+        "firstName" : "Katlyn", 
+        "lastName" : "K", 
+        "email" : "Katlyn8550@gmail.com", 
+        "password" : "otK5YtXpcalD1cm",
+        "availableNow": true,
+        "gitHub" : "https://www.github.com",
+        "hourlyRate": "200"
+
+    },
+    { 
+        "firstName" : "Lessie", 
+        "lastName" : "Walker", 
+        "email" : "Lessie_Kautzer61_Walker81@hotmail.com", 
+        "password" : "AP3EUTRZoxzsiHn",
+        "availableNow": false,
+        "gitHub" : "https://www.github.com",
+        "hourlyRate": "300"
+    },
+    { 
+        "firstName" : "Elton", 
+        "lastName" : "Heaney", 
+        "email" : "Elton_Heaney.Kemmer6@yahoo.com",
+        "password" : "3dVgRgSQmrGLaQE",
+        "availableNow": true,
+        "gitHub" : "https://www.github.com",
+        "hourlyRate": "400"
+    },
+    { 
+        "firstName" : "Josua", 
+        "lastName" : "Newman", 
+        "email" : "Josue6785@yahoo.com", 
+        "password" : "BNsmR75BHDH4na3",
+        "availableNow": true,
+        "gitHub" : "https://www.github.com",
+        "hourlyRate": 500
+    }
+]
+ 

@@ -1,0 +1,30 @@
+[
+    {   "_id": "1234567890ab",
+        "description" : "REACT"
+    },
+    { 
+        "_id": "1234567890ac",
+        "description" : "MongoDB"
+    },
+    { 
+        "_id": "1234567890ad",
+        "description" : "SQL Server"
+    },
+    { 
+        "_id": "1234567890ae",
+        "description" : "CSS Frameworks"
+    },
+    { 
+        "_id": "1234567890af",
+        "description" : "Javascript"
+    },
+    { 
+        "_id": "1234567890ag",
+        "description" : "C#"
+    },
+    { 
+        "_id": "1234567890ah",
+        "description" : "Express"
+    }
+
+]
