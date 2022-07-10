@@ -18,7 +18,7 @@ const Home = () => {
   const { loading, data } = useQuery(QUERY_ME);
  // Set userData with logged in users profile.
  const userData = data?.me || {};
- 
+ //debugger;
   const handleWithdrawJob = async (projectId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     
@@ -77,8 +77,10 @@ const Home = () => {
                         <p className="mb-2 text-gray-500 dark:text-gray-400 ">
                         {project.description}
                         </p>
-                        
-                         <SkillsList skills={project.skills} title="Skills" />
+                        {project.skills.length
+                          ? <SkillsList skills={project.skills} title="Skills" />
+                          : <h4 className="text-gray-500 dark:text-gray-400">No skills listed for project</h4>}
+              
                         <button data-id={project._id} type="click"  className="apply-button py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white 
                                                           bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 
                                                           focus:ring-offset-2 focus:ring-indigo-500"

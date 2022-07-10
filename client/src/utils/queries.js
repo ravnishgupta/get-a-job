@@ -32,7 +32,7 @@ export const QUERY_ME = gql`
       email
       availableNow
       hourlyRate
-      gitHub
+      github
       applications {
         _id
         description

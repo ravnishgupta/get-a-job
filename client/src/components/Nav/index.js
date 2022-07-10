@@ -12,7 +12,7 @@ function Nav(){
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                     <Link to="/home" className="hover:bg-teal-300 active:bg-teal-400 focus:outline-none focus:ring focus:ring-violet-300 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</Link>
-                    {!Auth.loggedIn() ? (
+                    {Auth.loggedIn() ? (
                       <>
                       <Link to="/dashboard" className="hover:bg-teal-300 active:bg-teal-400 focus:outline-none focus:ring focus:ring-violet-300 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</Link>
                       <Link to="/" onClick={Auth.logout} className="hover:bg-teal-300 active:bg-teal-400 focus:outline-none focus:ring focus:ring-violet-300 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Logout</Link>

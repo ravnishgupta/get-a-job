@@ -4,13 +4,13 @@ const typeDefs = gql`
 
 type User {
     _id: ID
-    firstName: String!
-    lastName: String!
-    email: String!
-    password: String!
-    availableNow: Boolean!
-    hourlyRate: String!
-    github: String!
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    availableNow: Boolean
+    hourlyRate: String
+    github: String
     applications: [Projects]
 
 }

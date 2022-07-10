@@ -34,7 +34,7 @@ export const WITHDRAW = gql`
       email
       availableNow
       hourlyRate
-      gitHub
+      github
       applications {
         _id
         description
@@ -58,7 +58,7 @@ export const SAVE_PROJECT = gql`
       email
       availableNow
       hourlyRate
-      gitHub
+      github
       applications {
         _id
         description
