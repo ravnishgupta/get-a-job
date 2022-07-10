@@ -8,6 +8,7 @@ import { QUERY_ME } from '../utils/queries';
 import { Accordion } from "flowbite-react";
 import SkillsList from '../components/SkillList';
 import { removeProjectId } from '../utils/localStorage';
+import Auth from '../utils/auth';
 
 const Home = () => {
 

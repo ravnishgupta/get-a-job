@@ -2,6 +2,8 @@
 import './App.css';
 import Home  from './pages/Home';
 import Dashboard  from './pages/Dashboard';
+import Login  from './pages/Login';
+import Signup  from './pages/Signup';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
@@ -35,7 +37,7 @@ function App() {
       <Router>
       <div className="App">
         <Nav />
-          {/* <Routes>
+           <Routes>
             <Route
               path="/"
               element={<Home />}
@@ -57,7 +59,6 @@ function App() {
               element={<Dashboard />}
             />
           </Routes>
-       */}
       
       </div>
       </Router>

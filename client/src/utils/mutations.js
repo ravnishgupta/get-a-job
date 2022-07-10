@@ -25,4 +25,45 @@ export const ADD_USER = gql`
   }
 `;
 
+export const WITHDRAW = gql`
+  mutation deleteProject($projectId: projectId! ) {
+    deleteProject(projectId: $projectId) {
+      _id
+      firstName
+      lastName
+      email
+      availableNow
+      hourlyRate
+      github
+      applications {
+        _id
+        description
+        title
+        payPerHour
+        Skills
+      }
+    }
+  }
+`;
 
+
+export const SAVE_PROJECT = gql`
+  mutation saveProject($projectId: projectId! ) {
+    saveProject(projectId: $projectId) {
+      _id
+      firstName
+      lastName
+      email
+      availableNow
+      hourlyRate
+      github
+      applications {
+        _id
+        description
+        title
+        payPerHour
+        Skills
+      }
+    }
+  }
+`;

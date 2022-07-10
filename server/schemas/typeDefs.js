@@ -51,6 +51,7 @@ type Query {
     login(email: String!, password: String!): Auth
     addUser(input: UserInput!): Auth
     saveProject(projectId: ID!): User
+    deleteProject(projectId: ID!): User
   }
   
   `
