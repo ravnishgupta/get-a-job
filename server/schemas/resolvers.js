@@ -14,12 +14,16 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
+    },
+
+    getSkills: async (parent) => {
+      const skills = await Skills.find()
+      return skills;
     }
   },
 
   Mutation: {
     addUser: async (parent, {input}) => {
-      debugger;
       console.log(`addUser: ${input}`)
       const user = await User.create(input);
       

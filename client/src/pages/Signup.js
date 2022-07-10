@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-import { useMutation } from '@apollo/client';
+import { Form, Alert } from 'react-bootstrap';
+import { useMutation, useQuery } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import { GET_SKILLS } from '../utils/queries';
 import Auth from '../utils/auth';
+import Select from "react-select";
+
 
 const Signup = () => {
   const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName:'', availableNow: true, gitHub: '', hourlyRate: '' });
   const [addUser, { error }] = useMutation(ADD_USER);
   const [showAlert, setShowAlert] = useState(false);
   const [validated] = useState(false);
+  debugger;
+  const skills = useQuery(GET_SKILLS);
+  console.log (skills)
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -31,13 +37,6 @@ const Signup = () => {
       const { data } = await addUser({
         variables: {
           input: {...formState},
-        //  "firstName": formState.firstName,
-        //  "lastName": formState.lastName,
-        //  "email": formState.email,
-        //  "password": formState.password,
-        //  "gitHub": formState.gitHub,
-        //  "hourlyRate": parseFloat(formState.hourlyRate),
-        //  "availableNow": formState.availableNow
         },
       });
       Auth.login(data.addUser.token);
@@ -123,9 +122,10 @@ const Signup = () => {
                 <label className="block text-left text-sm font-medium text-gray-700" style={{maxWidth:"300px"}}>
                 <span className="text-gray-700">Skills:</span>
                  
-                  <select className="form-multiselect block w-full mt-1" id="skill" multiple>
+                  {/* <select className="form-multiselect block w-full mt-1" id="skill" multiple>
 
-                  </select>
+                  </select> */}
+                  <Select isMulti />
               
                 </label>
               </div>
