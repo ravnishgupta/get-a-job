@@ -10,6 +10,7 @@ export const getappliedJobIds = () => {
   
   // Set list of applied job in local storage.
   export const saveJobIds = (bookIdArr) => {
+    console.log(bookIdArr);
     if (bookIdArr.length) {
       localStorage.setItem('applied_jobs', JSON.stringify(bookIdArr));
     } else {

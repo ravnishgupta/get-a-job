@@ -29,14 +29,7 @@ const Login = () => {
         variables: { ...userFormData },
       });
       Auth.login(data.login.token);
-      //const response = await useMutation(LOGIN_USER)
-      //loginUser(userFormData);
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
-      // const { token, user } = await response.json();
-      // console.log(user);
-      // Auth.login(token);
+
     } catch (err) {
       console.error(err);
       setShowAlert(true);

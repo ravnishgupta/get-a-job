@@ -51,8 +51,7 @@ const resolvers = {
       return { token, user };
     },
     saveProject: async (parent, { projectId }, context) => {
-      
-      console.log("Here");
+ 
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },

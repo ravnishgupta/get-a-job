@@ -18,37 +18,7 @@ const Home = () => {
   const { loading, data } = useQuery(QUERY_ME);
  // Set userData with logged in users profile.
  const userData = data?.me || {};
- console.log(userData);
  
-  const prSample = [{
-    _id : 1,
-    title: "Test projects",
-    description : "As we shared in the release post, React 18 introduces features powered by our new concurrent renderer, with a gradual adoption strategy for existing applications. In this post, we will guide you through the steps for upgrading to React 18.",
-    startDate: "2022-07-31",
-    endDate:"2023-07-31",
-    payPerHour:"80",
-    skills: ["C#", "JS", ".NET", "SQL Server"]
-  },
-  {
-    _id : 2,
-    title: "Test projects2",
-    description : "Test project 2",
-    startDate: "2022-07-31",
-    endDate:"2023-07-31",
-    payPerHour:"80",
-    skills: ["C#", "JS", ".NET", "SQL Server"]
-  },
-  {
-    _id : 3,
-    title: "Test projects3",
-    description : "Test project 3",
-    startDate: "2022-07-31",
-    endDate:"2023-07-31",
-    payPerHour:"80",
-    skills: ["C#", "JS", ".NET", "SQL Server"]
-  }]
-  
-
   const handleWithdrawJob = async (projectId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     
@@ -109,7 +79,7 @@ const Home = () => {
                         </p>
                         
                          <SkillsList skills={project.skills} title="Skills" />
-                        <button data-id={project._id} type="click"  class="apply-button py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white 
+                        <button data-id={project._id} type="click"  className="apply-button py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white 
                                                           bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 
                                                           focus:ring-offset-2 focus:ring-indigo-500"
                                                           onClick={() => handleWithdrawJob(project._id)}>Withdraw</button>  

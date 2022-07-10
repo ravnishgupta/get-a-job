@@ -15,7 +15,10 @@ const ProjectsList = ({ projects, title }) => {
   // create state to hold saved bookId values
   const [savedJobIds, setsaveJobIds] = useState(getappliedJobIds());
 
- 
+  useEffect(() => {
+    return () => saveJobIds(savedJobIds);
+  });
+
 
   // create function to handle saving a book to our database
   const handleSaveProject = async (projectId) => {
@@ -33,10 +36,9 @@ const ProjectsList = ({ projects, title }) => {
        await savedProject({
             variables: {  projectId: projectId }
         })
-      
       // if book successfully saves to user's account, save book id to state
-      setsaveJobIds([...savedJobIds, projectId]);
-      saveJobIds(savedJobIds);
+      await setsaveJobIds([...savedJobIds, projectId]);
+    
     } catch (err) {
       console.error(err);
     }
@@ -65,7 +67,7 @@ const ProjectsList = ({ projects, title }) => {
                  
                 {project.skills.length
                 ? <SkillsList skills={project.skills} title="Skills" />
-                : <h4 clasName="text-gray-500 dark:text-gray-400">No skills listed for project</h4>}
+                : <h4 className="text-gray-500 dark:text-gray-400">No skills listed for project</h4>}
                 
                  {Auth.loggedIn() && (
                     <button

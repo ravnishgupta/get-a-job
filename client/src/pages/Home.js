@@ -11,37 +11,7 @@ const Home = () => {
   // If data exists store in thoughts else empty array
   const projects = data?.projects || [];
 
-  const prSample = [{
-    _id : 1,
-    title: "Test projects",
-    description : "As we shared in the release post, React 18 introduces features powered by our new concurrent renderer, with a gradual adoption strategy for existing applications. In this post, we will guide you through the steps for upgrading to React 18.",
-    startDate: "2022-07-31",
-    endDate:"2023-07-31",
-    payPerHour:"80",
-    skills: ["C#", "JS", ".NET", "SQL Server"]
-  },
-  {
-    _id : 2,
-    title: "Test projects2",
-    description : "Test project 2",
-    startDate: "2022-07-31",
-    endDate:"2023-07-31",
-    payPerHour:"80",
-    skills: ["C#", "JS", ".NET", "SQL Server"]
-  },
-  {
-    _id : 3,
-    title: "Test projects3",
-    description : "Test project 3",
-    startDate: "2022-07-31",
-    endDate:"2023-07-31",
-    payPerHour:"80",
-    skills: ["C#", "JS", ".NET", "SQL Server"]
-  }]
-
-
   
-
   return (
     <div className="bg-white">
     <header >
