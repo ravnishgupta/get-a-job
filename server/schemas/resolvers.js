@@ -23,10 +23,15 @@ const resolvers = {
      
       return proj;
     },
+    getSkills: async (parent) => {
+      const skills = await Skills.find()
+      return skills;
+    }
   },
 
   Mutation: {
-    addUser: async (parent, { input }) => {
+    addUser: async (parent, {input}) => {
+      console.log(`addUser: ${input}`)
       const user = await User.create(input);
       
       const token = signToken(user);

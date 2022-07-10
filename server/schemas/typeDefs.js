@@ -9,8 +9,8 @@ type User {
     email: String!
     password: String!
     availableNow: Boolean!
-    hourlyRate: Float!
-    gitHub: String!
+    hourlyRate: String!
+    github: String!
     applications: [Projects]
 
 }
@@ -21,7 +21,7 @@ input UserInput{
   email: String!
   password: String!
   availableNow: Boolean!
-  hourlyRate: Float!
+  hourlyRate: String!
   gitHub: String!
 }
 
@@ -52,9 +52,13 @@ type Query {
     projects: [Projects]
   }
 
+type Query {
+  getSkills: Skills
+}
+
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(input: UserInput!): Auth
+    addUser(input: UserInput): Auth
     saveProject(projectId: ID!): User
     deleteProject(projectId: ID!): User
   }

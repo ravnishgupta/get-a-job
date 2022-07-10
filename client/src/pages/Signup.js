@@ -1,55 +1,75 @@
 import React, { useState } from 'react';
+import { Form, Alert } from 'react-bootstrap';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
+import { GET_SKILLS } from '../utils/queries';
+import Auth from '../utils/auth';
+import Select from "react-select";
+
 
 const Signup = () => {
-    const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName:'', availableNow: true, gitHub: '', hourlyRate: '' });
+  const [addUser, { error }] = useMutation(ADD_USER);
+  const [showAlert, setShowAlert] = useState(false);
+  const [validated] = useState(false);
+  debugger;
+  const skills = useQuery(GET_SKILLS);
+  console.log (skills)
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
+    setFormState({...formState, [name]: value});
+  };
+  
+  const handleFormSubmit = async (event) => {
+
+    debugger
+    event.preventDefault();
+     // check if form has everything (as per react-bootstrap docs)
+     const form = event.currentTarget;
+     if (form.checkValidity() === false) {
+       event.preventDefault();
+       event.stopPropagation();
+     }
+
+    try {
+      const { data } = await addUser({
+        variables: {
+          input: {...formState},
+        },
+      });
+      Auth.login(data.addUser.token);
+    } catch (err) {
+      console.error(error);
+      setShowAlert(true);
+    }
+
     setFormState({
-      ...formState,
-      [name]: value,
+      email: '', 
+      password: '', 
+      firstName: '', 
+      lastName:'', 
+      availableNow: true, 
+      gitHub: '', 
+      hourlyRate: ''
     });
   };
-
-  /* To add user via graphql
-  mutation AddUser($input: UserInput!) {
-  addUser(input: $input) {
-    token
-    user {
-      firstName
-      lastName
-      email
-    }
-  }
-}
-
-Variables
-{
-  "input": {
-    "firstName": "Megha",
-    "lastName": "Raj",
-    "email": "m@m.com",
-    "password": "test",
-    "availableNow": true,
-    "hourlyRate" : 200,
-    "gitHub": "meghak@github.com"
-  }
-}
-
-  */
-
- 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-  };
+  
     return (
+      <>
         <main>
         <div>
         <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">Create Your Profile!</h2>
       </div>
 
-      <form className="signup-form" encType="multipart/form-data">
+        {/* This is needed for the validation functionality above */}
+        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+        {/* show alert if server response is bad */}
+        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+          Something went wrong with your signup!
+        </Alert>
+
 
         <div className="shadow overflow-hidden sm:rounded-md ">
           <div className="px-4 py-5 bg-gray-100 sm:p-6">
@@ -57,18 +77,18 @@ Variables
 
 
               <div className="col-span-6 sm:col-span-3">
-                <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">First name</label>
-                <input type="text" name="first-name" id="first-name" autoComplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={handleChange}></input>
+                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">First name</label>
+                <input type="text" name="firstName" id="firstName" autoComplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={handleChange}></input>
               </div>
 
               <div className="col-span-6 sm:col-span-3">
-                <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">Last name</label>
-                <input type="text" name="last-name" id="last-name" complete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={handleChange}></input>
+                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">Last name</label>
+                <input type="text" name="lastName" id="lastName" complete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={handleChange}></input>
               </div>
 
               <div className="col-span-6 sm:col-span-4">
-                <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">Email address</label>
-                <input type="email" name="email-address" id="email-address" complete="email" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={handleChange}></input>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
+                <input type="email" name="email" id="email"  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={handleChange}></input>
               </div>
 
                <div className="col-span-6 sm:col-span-4 flex justify-center">
@@ -84,16 +104,16 @@ Variables
               </div>               
 
               <div className="col-span-3 sm:col-span-3">
-                <label htmlFor="price" className="block text-sm font-medium text-gray-700">Hourly Rate $</label>
-                <input type="number" name="price" id="price" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" onChange={handleChange}></input>
+                <label htmlFor="hourlyRate" className="block text-sm font-medium text-gray-700">Hourly Rate $</label>
+                <input type="number" name="hourlyRate" id="hourlyRate" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" onChange={handleChange}></input>
               </div>
 
 
               <div className="col-span-6 sm:col-span-4">
-                <label htmlFor="company-website" className="block text-sm font-medium text-gray-700"> Github </label>
+                <label htmlFor="gitHub" className="block text-sm font-medium text-gray-700"> Github </label>
                 <div className="mt-1 flex rounded-md shadow-sm">
                   <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"> http:// </span>
-                  <input type="text" name="company-website" id="company-website" className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com" onChange={handleChange}></input>
+                  <input type="text" name="gitHub" id="gitHub" className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com" onChange={handleChange}></input>
                 </div>
               </div>
 
@@ -102,9 +122,10 @@ Variables
                 <label className="block text-left text-sm font-medium text-gray-700" style={{maxWidth:"300px"}}>
                 <span className="text-gray-700">Skills:</span>
                  
-                  <select className="form-multiselect block w-full mt-1" id="skill" multiple>
+                  {/* <select className="form-multiselect block w-full mt-1" id="skill" multiple>
 
-                  </select>
+                  </select> */}
+                  <Select isMulti />
               
                 </label>
               </div>
@@ -126,8 +147,9 @@ Variables
         </div>
         </div>
 
-      </form>
+      </Form>
   </main>
+  </>
     );
 }
 

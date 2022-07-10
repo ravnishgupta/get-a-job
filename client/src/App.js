@@ -37,7 +37,7 @@ function App() {
       <Router>
       <div className="App">
         <Nav />
-           <Routes>
+          <Routes>
             <Route
               path="/"
               element={<Home />}
@@ -59,6 +59,7 @@ function App() {
               element={<Dashboard />}
             />
           </Routes>
+      
       
       </div>
       </Router>
