@@ -18,6 +18,7 @@ const Home = () => {
   const { loading, data } = useQuery(QUERY_ME);
  // Set userData with logged in users profile.
  const userData = data?.me || {};
+ console.log(userData);
  
   const prSample = [{
     _id : 1,
@@ -46,7 +47,7 @@ const Home = () => {
     payPerHour:"80",
     skills: ["C#", "JS", ".NET", "SQL Server"]
   }]
-  userData.applications = prSample;
+  
 
   const handleWithdrawJob = async (projectId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;

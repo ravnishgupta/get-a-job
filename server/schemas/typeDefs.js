@@ -10,7 +10,7 @@ type User {
     password: String!
     availableNow: Boolean!
     hourlyRate: Float!
-    github: String!
+    gitHub: String!
     applications: [Projects]
 
 }
