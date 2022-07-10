@@ -38,6 +38,8 @@ const LoginForm = () => {
 
     try {
       
+      
+      debugger;
       // Call login graphql API by passing the credential users provided on the form.
       const { data } = await login({
         variables: { ...userFormData}
@@ -90,7 +92,7 @@ const LoginForm = () => {
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
         <Button
-          disabled={!(userFormData.email && userFormData.password)}
+          // {!(userFormData.email && userFormData.password)}
           type='submit'
           variant='success'>
           Submit

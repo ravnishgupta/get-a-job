@@ -25,7 +25,7 @@ const ProjectsList = ({ projects, title }) => {
                 </p>
                 
                  <SkillsList skills={project.skills} title="Skills" />
-                <button data-id={project._id} type="click"  class="apply-button py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white 
+                <button data-id={project._id} type="click"  className="apply-button py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white 
                                                   bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 
                                                   focus:ring-offset-2 focus:ring-indigo-500">Apply</button>  
              </Accordion.Content>
