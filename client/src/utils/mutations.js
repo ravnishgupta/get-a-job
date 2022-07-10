@@ -6,8 +6,8 @@ export const LOGIN_USER = gql`
       token
       user {
         _id
-        firstname
-        lastname
+        firstName
+        lastName
       }
     }
   }
@@ -18,8 +18,8 @@ export const ADD_USER = gql`
       token
       user {
         _id
-        firstname
-        lastname
+        firstName
+        lastName
       }
     }
   }
