@@ -16,6 +16,13 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
+    projects: async () => {
+       const proj= await Projects.find()
+          .select('-__v -password')
+          .populate('skills');
+     
+      return proj;
+    },
     getSkills: async (parent) => {
       const skills = await Skills.find()
       return skills;
@@ -49,10 +56,24 @@ const resolvers = {
       return { token, user };
     },
     saveProject: async (parent, { projectId }, context) => {
+ 
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { applications: projectId } },
+          { new: true }
+        ).populate('applications');
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    deleteProject: async (parent, { projectId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { applications: projectId } },
           { new: true }
         ).populate('applications');
 

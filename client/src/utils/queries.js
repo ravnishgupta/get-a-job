@@ -1,21 +1,29 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_PROJECTS = gql`
-  query projects($username: String) {
-    projects(username: $username) {
+export const QUERY_PROJECTS = gql`{
+ projects {
       _id
       description
       title
-    }
+      payPerHour
+      skills{
+        _id
+        description
+      }
+      startDate
+      endDate
   }
+}
 `;
 
 export const GET_SKILLS = gql `
-  query getSkills {
+{  
+  getSkills {
       _id
       description
   }
-`
+}
+`;
 
 export const QUERY_ME = gql`
   {
@@ -26,13 +34,17 @@ export const QUERY_ME = gql`
       email
       availableNow
       hourlyRate
-      gitHub
+      github
       applications {
         _id
         description
         title
         payPerHour
-        Skills
+        skills {
+          description
+        }
+        startDate
+        endDate
       }
     }
   }

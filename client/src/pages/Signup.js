@@ -12,9 +12,11 @@ const Signup = () => {
   const [addUser, { error }] = useMutation(ADD_USER);
   const [showAlert, setShowAlert] = useState(false);
   const [validated] = useState(false);
-  debugger;
-  const skills = useQuery(GET_SKILLS);
-  console.log (skills)
+
+  const { loading, data } = useQuery(GET_SKILLS);
+  // Set userData with logged in users profile.
+  const skills = data?.getSkills || {};
+  console.log(skills);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,7 +26,7 @@ const Signup = () => {
   
   const handleFormSubmit = async (event) => {
 
-    debugger
+
     event.preventDefault();
      // check if form has everything (as per react-bootstrap docs)
      const form = event.currentTarget;
@@ -78,34 +80,48 @@ const Signup = () => {
 
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">First name</label>
-                <input type="text" name="firstName" id="firstName" autoComplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={handleChange}></input>
+                <input type="text" name="firstName" id="firstName" autoComplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                        value={formState.firstName}
+                        onChange={handleChange}/>
               </div>
 
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">Last name</label>
-                <input type="text" name="lastName" id="lastName" complete="family-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={handleChange}></input>
+                <input type="text" name="lastName" id="lastName" complete="family-name" 
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                            value={formState.lastName}
+                            onChange={handleChange}/>
+                        
               </div>
 
               <div className="col-span-6 sm:col-span-4">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
-                <input type="email" name="email" id="email"  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={handleChange}></input>
+                <input type="email" name="email" id="email"  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                              value={formState.email}
+                              onChange={handleChange}/>
               </div>
 
                <div className="col-span-6 sm:col-span-4 flex justify-center">
                   <div className="form-check form-switch">
-                    <input className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm" type="checkbox" role="switch" id="availableCheckbox" checked onChange={handleChange}></input>
+                    <input name="availableNow" className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm" type="checkbox" role="switch" id="availableCheckbox" checked 
+                        value={formState.availableNow}
+                        onChange={handleChange}/>
                     <label className="form-check-label inline-block text-gray-800" htmlFor="flexSwitchCheckChecked">Available Now:</label>
                   </div>                
                </div> 
 
               <div className="col-span-6 sm:col-span-4">
                 <label or="password" className="block text-sm font-medium text-gray-700">Password</label>
-                <input type="password" name="password" id="password" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" onChange={handleChange}></input>
+                <input type="password" name="password" id="password" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                  value={formState.password}
+                  onChange={handleChange}/>
               </div>               
 
               <div className="col-span-3 sm:col-span-3">
                 <label htmlFor="hourlyRate" className="block text-sm font-medium text-gray-700">Hourly Rate $</label>
-                <input type="number" name="hourlyRate" id="hourlyRate" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" onChange={handleChange}></input>
+                <input type="number" name="hourlyRate" id="hourlyRate" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" 
+                value={formState.hourlyRate}
+                onChange={handleChange}/>
               </div>
 
 
@@ -113,7 +129,9 @@ const Signup = () => {
                 <label htmlFor="gitHub" className="block text-sm font-medium text-gray-700"> Github </label>
                 <div className="mt-1 flex rounded-md shadow-sm">
                   <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"> http:// </span>
-                  <input type="text" name="gitHub" id="gitHub" className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com" onChange={handleChange}></input>
+                  <input type="text" name="gitHub" id="gitHub" className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com"
+                  value={formState.gitHub}
+                  onChange={handleChange}/>
                 </div>
               </div>
 
@@ -122,10 +140,12 @@ const Signup = () => {
                 <label className="block text-left text-sm font-medium text-gray-700" style={{maxWidth:"300px"}}>
                 <span className="text-gray-700">Skills:</span>
                  
-                  {/* <select className="form-multiselect block w-full mt-1" id="skill" multiple>
-
-                  </select> */}
-                  <Select isMulti />
+                  <Select isMulti onChange={handleChange}>
+                  <option value="choose" disabled selected="selected">
+                    -- Choose Skills --
+                  </option>
+                
+                  </Select>
               
                 </label>
               </div>
@@ -133,9 +153,10 @@ const Signup = () => {
               <div className="col-span-6 sm:col-span-4">
                 <label htmlFor="about" className="block text-sm font-medium text-gray-700"> About </label>
                 <div className="mt-1">
-                  <textarea id="about" name="about" rows="3" className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
+                  <textarea id="about" name="about" rows="3" className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com" 
+                ></textarea>
                 </div>
-                <p className="mt-2 text-sm text-gray-500">Brief description htmlFor your profile.</p>
+                <p className="mt-2 text-sm text-gray-500">Brief description For your profile.</p>
               </div>
             </div>
 

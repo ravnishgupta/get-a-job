@@ -11,10 +11,10 @@ const SkillsList =({skills, title}) => {
         skills.forEach((skill, i) => {
             if(i < skills.length-1)
             {   
-                allskill += skill + ", ";
+                allskill += skill.description + ", ";
             }
             else{
-                allskill += skill;
+                allskill += skill.description;
             }
             
         });

@@ -7,14 +7,14 @@ const {User, Projects, Skills } = require('../models');
 
 db.once('open', async () => {
   try {
-    //await Thought.deleteMany({});
+
     await User.deleteMany({});
     await Projects.deleteMany({});
     await Skills.deleteMany({});
 
     await User.create(userSeeds);
-    await Projects.create(projectSeeds);
     await Skills.create(skillSeeds);
+    await Projects.create(projectSeeds);
 
   
   } catch (err) {
