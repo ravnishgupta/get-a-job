@@ -2,11 +2,11 @@
     { 
         "description" : "This is the best paying project", 
         "title" : "$600 an hour!",
-        "payPerHours": 600
+        "payPerHour": 600
     },
     { 
         "description" : "MERN project that pays $200 an hour", 
         "title" : "MERN project",
-        "payPerHours": 200
+        "payPerHour": 200
     }
 ]

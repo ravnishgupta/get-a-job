@@ -1,8 +1,47 @@
+import React, { useState, useEffect } from 'react';
 import { Accordion } from "flowbite-react";
 import SkillsList from '../SkillList';
-
+import {  useMutation } from '@apollo/client';
+import { SAVE_PROJECT  } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import { saveJobIds, getappliedJobIds } from '../../utils/localStorage';
 
 const ProjectsList = ({ projects, title }) => {
+
+  // Create a saveProject function using the SAVE_PROJECT mutation
+  const [savedProject] = useMutation(SAVE_PROJECT);
+
+
+  // create state to hold saved bookId values
+  const [savedJobIds, setsaveJobIds] = useState(getappliedJobIds());
+
+ 
+
+  // create function to handle saving a book to our database
+  const handleSaveProject = async (projectId) => {
+    
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+       // Call saveBook graphQl api to save the selected book to user record.
+
+       await savedProject({
+            variables: {  projectId: projectId }
+        })
+      
+      // if book successfully saves to user's account, save book id to state
+      setsaveJobIds([...savedJobIds, projectId]);
+      saveJobIds(savedJobIds);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
     if (!projects.length) {
       return <h3>Add Projects to View them here</h3>;
     }
@@ -23,11 +62,29 @@ const ProjectsList = ({ projects, title }) => {
                 <p className="mb-2 text-gray-500 dark:text-gray-400 ">
                 {project.description}
                 </p>
+                 
+                {project.skills.length
+                ? <SkillsList skills={project.skills} title="Skills" />
+                : <h4 clasName="text-gray-500 dark:text-gray-400">No skills listed for project</h4>}
                 
-                 <SkillsList skills={project.skills} title="Skills" />
-                <button data-id={project._id} type="click"  className="apply-button py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white 
-                                                  bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 
-                                                  focus:ring-offset-2 focus:ring-indigo-500">Apply</button>  
+                 {Auth.loggedIn() && (
+                    <button
+                      data-id={project._id}
+                      type="click" 
+                      disabled={savedJobIds?.some((savedJobId) => savedJobId === project._id)}
+                      className='apply-button py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white 
+                      bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 
+                      focus:ring-offset-2 focus:ring-indigo-500'
+                      onClick={() => handleSaveProject(project._id)}>
+                      {savedJobIds?.some((savedJobId) => savedJobId === project._id)
+                        ? 'Applied!'
+                        : 'Apply!'}
+                      
+                    </button>
+
+                    
+                  )}
+              
              </Accordion.Content>
             </Accordion.Panel>
           ))}

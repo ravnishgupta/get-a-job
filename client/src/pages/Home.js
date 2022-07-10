@@ -4,12 +4,12 @@ import { QUERY_PROJECTS } from '../utils/queries';
 import ProjectList from '../components/ProjectList';
 
 const Home = () => {
+ 
   // use useQuery hook to make query request
   const { loading, data } = useQuery(QUERY_PROJECTS);
 
   // If data exists store in thoughts else empty array
   const projects = data?.projects || [];
-  console.log(projects);
 
   const prSample = [{
     _id : 1,
@@ -39,6 +39,9 @@ const Home = () => {
     skills: ["C#", "JS", ".NET", "SQL Server"]
   }]
 
+
+  
+
   return (
     <div className="bg-white">
     <header >
@@ -55,7 +58,7 @@ const Home = () => {
             {loading ? (
               <div>Loading...</div>
             ) : ( 
-              <ProjectList projects={prSample} title="Projects" />
+              <ProjectList projects={projects} title="Projects" />
            
             )}
           

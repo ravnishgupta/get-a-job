@@ -24,8 +24,6 @@ const LoginForm = () => {
   
   };
 
-  useEffect(() => console.log(userFormData), [userFormData]);
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     
@@ -37,9 +35,6 @@ const LoginForm = () => {
     }
 
     try {
-      
-      
-      debugger;
       // Call login graphql API by passing the credential users provided on the form.
       const { data } = await login({
         variables: { ...userFormData}

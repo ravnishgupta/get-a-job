@@ -26,7 +26,7 @@ export const ADD_USER = gql`
 `;
 
 export const WITHDRAW = gql`
-  mutation deleteProject($projectId: projectId! ) {
+  mutation deleteProject($projectId: ID! ) {
     deleteProject(projectId: $projectId) {
       _id
       firstName
@@ -34,7 +34,7 @@ export const WITHDRAW = gql`
       email
       availableNow
       hourlyRate
-      github
+      gitHub
       applications {
         _id
         description
@@ -48,22 +48,9 @@ export const WITHDRAW = gql`
 
 
 export const SAVE_PROJECT = gql`
-  mutation saveProject($projectId: projectId! ) {
+  mutation saveProject($projectId: ID! ) {
     saveProject(projectId: $projectId) {
       _id
-      firstName
-      lastName
-      email
-      availableNow
-      hourlyRate
-      github
-      applications {
-        _id
-        description
-        title
-        payPerHour
-        Skills
-      }
     }
   }
 `;

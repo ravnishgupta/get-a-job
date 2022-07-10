@@ -25,18 +25,20 @@ input UserInput{
   gitHub: String!
 }
 
-type Projects {
-    _id : ID
-    description: String!
-    title: String!
-    payPerHour: Float
-    Skills: [Skills]
-}
-
 type Skills {
   _id : ID
   description: String!
 }
+
+
+type Projects {
+    _id : ID
+    description: String
+    title: String 
+    payPerHour: Float
+    skills: [Skills]
+}
+
 
 type Auth {
     token: ID!
@@ -45,6 +47,7 @@ type Auth {
 
 type Query {
     me: User
+    projects: [Projects]
   }
 
   type Mutation {
