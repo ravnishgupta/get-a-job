@@ -1,6 +1,7 @@
 // Login page
 import React, { useState } from 'react';
 import { Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 // Import useMutation hook and LOGIN_USER mutation.
 // This will be used to connect to the graphQl API running on server.
@@ -64,7 +65,7 @@ const LoginForm = () => {
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
         <p className="mt-2 text-center text-sm text-gray-600">
             Or
-            <a href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500"> sign up for a new account </a>
+            <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500"> sign up for a new account </Link>
         </p>
     </div>
     <form className="login-form mt-8 space-y-6" noValidate validated={validated} onSubmit={handleFormSubmit}>
