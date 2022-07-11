@@ -1,28 +1,23 @@
 import React, { useState } from 'react';
 import { Form, Alert } from 'react-bootstrap';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-import { GET_SKILLS } from '../utils/queries';
 import Auth from '../utils/auth';
-import Select from "react-select";
 
 
 const Signup = () => {
-  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName:'', availableNow: true, gitHub: '', hourlyRate: '', about: '' });
+  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName:'', availableNow: true, gitHub: '', hourlyRate: '', about: ''});
   const [addUser, { error }] = useMutation(ADD_USER);
   const [showAlert, setShowAlert] = useState(false);
   const [validated] = useState(false);
 
-  const { data } = useQuery(GET_SKILLS);
-  // Set userData with logged in users profile.
-  const skills = data?.getSkills || {};
-  console.log(skills);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
     setFormState({...formState, [name]: value});
   };
+
   
   const handleFormSubmit = async (event) => {
 
@@ -36,6 +31,8 @@ const Signup = () => {
      }
 
     try {
+   
+    
       const { data } = await addUser({
         variables: {
           input: {...formState},
@@ -57,6 +54,8 @@ const Signup = () => {
       hourlyRate: '',
       about: ''
     });
+
+  
   };
   
     return (
@@ -134,21 +133,6 @@ const Signup = () => {
                   value={formState.gitHub}
                   onChange={handleChange}/>
                 </div>
-              </div>
-
-              <div className="col-span-6 sm:col-span-4">
-
-                <label className="block text-left text-sm font-medium text-gray-700" style={{maxWidth:"300px"}}>
-                <span className="text-gray-700">Skills:</span>
-                 
-                  <Select isMulti onChange={handleChange}>
-                  <option value="choose" disabled selected="selected">
-                    -- Choose Skills --
-                  </option>
-                
-                  </Select>
-              
-                </label>
               </div>
 
               <div className="col-span-6 sm:col-span-4">
