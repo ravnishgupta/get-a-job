@@ -25,8 +25,8 @@ function Nav(){
                   </div>
                 </div>  
 
-              <div class="md:hidden" id="mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <div className="md:hidden" id="mobile-menu">
+                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                
                 <Link to="/home" className="hover:bg-teal-300 active:bg-teal-700 focus:outline-none focus:ring focus:ring-violet-300 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</Link>
                     {Auth.loggedIn() ? (
