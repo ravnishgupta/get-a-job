@@ -64,4 +64,4 @@ SO THAT I can publish my professional information and look for jobs
 ## Screenshots 
 
 
-![Screenshot of the application](./public/images/Tech%20Up%20Work.png)
+![Screenshot of the application](/images/application-screenshot.PNG)
