@@ -1,49 +1,45 @@
 # Get A Job!
 
 ## Overview
-This web application allows engineers to find work on their own terms! They are able to search for work that fits their skill set and gives them the freedom and flexibility of freelancing. <p>
-Engineers must create a profile and log in in order to search and apply for part-time work. <p>
-Companies that are looking for free-lance engineers or need certain projects done can post their job needs, review applications, and view candidate's profiles and resumes.<p>
+This `SPA (Single Page Application)` allows engineers to find work on their own terms! They are able to search for work that fits their skill set and gives them the freedom and flexibility of freelancing. <br>
+Engineers must create a profile and log in in order to search and apply for part-time work. <br>
+Companies that are looking for free-lance engineers or need certain projects done can post their job needs, review applications, and view candidate's profiles and resumes.<br>
+The application has been deployed to `Heroku`; the link is [https://agile-plateau-35687.herokuapp.com/](https://agile-plateau-35687.herokuapp.com/)
 
-<p>MVP Implemeted Features:<p>
-Candidates looking for jobs can signup by filling out their name, email, a short bio, and uploading their resume.
-The app requires a login for users to access pages.
-The app has the following screens:<p>
-Home <p>
-Login to the application using the provided email and password.
-The candidate can view the homepage with project list and click Apply to apply for projects.
-Dashboard<p>
-All projects for which a user applied for will be available in dashboard view.
-The following 3 screens are now available for all logged in users but in future iterations will be for employers only.
+**MVP Implemeted Features:**
+1. Home: displays all the projects that are available BUT without the `Apply` button 
+1. Login: a candidate can login with their credentials 
+1. Apply for project(s): Once the user is logged, they can apply for one or more projects by tapping the `Apply` button. 
+1. Change button state: Once a user has applied for a project, the `Apply` button will be replaced by `Withdraw` button
+1. Withdraw: a user can also withdraw their application by tapping on `Withdraw` button
+1. Tokenization: use `JWT` to assign a unique token 
+1. Sign up: a candidates looking for jobs can sign up by filling out their:
+- Name
+- Email
+- Availability
+- Hourly Rate
+- A short bio 
 
-Projects<p>
-This view will show all projects and an option to view applicants. The 'View Applicants' button will display the count of applicants.
-
-Applicants view<p>
-This view will display a project and its applicants.
-
-Talent View<p>
-Shows all available candidates with options to contact and view resumes if any uploaded.
 
 ## Technologies Used
+- `MongoDB`
+- `Express`
+- `React`
+- `Node.js`
+- `Mongoose`
+- `Apollo`
+- `GraphQL`
 - `bcrypt`
 - `@tailwindcss/aspect-ratio`
 - `@tailwindcss/forms`
-- `connect-session-sequelize`
-- `dotenv`
-- `express`
-- `express-handlebars`
-- `express-session`
+- `JWT`
 - `flowbite`
 - `multer`
-- `mysql2`
-- `sequelize`
 - `tailwindcss`
-- `mongoose`
-- `apollo`
-- `node`
-- `react`
-- `graphql`
+- `Heroku`
+- `MongoDB Atlas`
+- `Context API`
+
 
 
 ## User Story
@@ -55,9 +51,9 @@ SO THAT I can publish my professional information and look for jobs
 
 ## Contributors
 - Megha Kulathattil: [github.com/meghark](https://github.com/meghark)
-- Natalie Sleem:[github.com/nataliesleem](https://github.com/nataliesleem)
 - Ravnish Gupta: [github.com/ravnishgupta](https://github.com/ravnishgupta)
 - Nitish Doss: [github.com/nitishd22](https://github.com/nitishd22)
+- Natalie Sleem:[github.com/nataliesleem](https://github.com/nataliesleem)
 
 ## Future State
 - Companies can express their interest to hire certain candidates
@@ -66,8 +62,6 @@ SO THAT I can publish my professional information and look for jobs
 - Monetization capabilities by providing tiered subscriptions 
 
 ## Screenshots 
-Deployed application : 
-
 
 
 ![Screenshot of the application](./public/images/Tech%20Up%20Work.png)
