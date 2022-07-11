@@ -61,7 +61,9 @@ SO THAT I can publish my professional information and look for jobs
 - Integrated collaboration technologies, e.g. Slack, Messenger, etc
 - Monetization capabilities by providing tiered subscriptions 
 
-## Screenshots 
+## Video
 
 
-![Screenshot of the application](/images/application-screenshot.PNG)
+https://user-images.githubusercontent.com/34320760/178177880-95bd00dc-b136-4630-8008-866396405169.mp4
+
+
