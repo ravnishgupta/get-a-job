@@ -43,6 +43,10 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
+    about: {
+      type: String,
+      maxlength: 280
+    },
   },
   // set this to use virtual below
   {

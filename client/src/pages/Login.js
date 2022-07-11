@@ -1,6 +1,6 @@
 // Login page
-import React, { useState, useEffect } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Alert } from 'react-bootstrap';
 
 // Import useMutation hook and LOGIN_USER mutation.
 // This will be used to connect to the graphQl API running on server.

@@ -1,28 +1,23 @@
 import React, { useState } from 'react';
 import { Form, Alert } from 'react-bootstrap';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-import { GET_SKILLS } from '../utils/queries';
 import Auth from '../utils/auth';
-import Select from "react-select";
 
 
 const Signup = () => {
-  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName:'', availableNow: true, gitHub: '', hourlyRate: '' });
+  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName:'', availableNow: true, gitHub: '', hourlyRate: '', about: ''});
   const [addUser, { error }] = useMutation(ADD_USER);
   const [showAlert, setShowAlert] = useState(false);
   const [validated] = useState(false);
 
-  const { loading, data } = useQuery(GET_SKILLS);
-  // Set userData with logged in users profile.
-  const skills = data?.getSkills || {};
-  console.log(skills);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
     setFormState({...formState, [name]: value});
   };
+
   
   const handleFormSubmit = async (event) => {
 
@@ -36,6 +31,8 @@ const Signup = () => {
      }
 
     try {
+   
+    
       const { data } = await addUser({
         variables: {
           input: {...formState},
@@ -54,16 +51,19 @@ const Signup = () => {
       lastName:'', 
       availableNow: true, 
       gitHub: '', 
-      hourlyRate: ''
+      hourlyRate: '',
+      about: ''
     });
+
+  
   };
   
     return (
       <>
-        <main>
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div>
         <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">Create Your Profile!</h2>
-      </div>
+        </div>
 
         {/* This is needed for the validation functionality above */}
         <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
@@ -136,27 +136,16 @@ const Signup = () => {
               </div>
 
               <div className="col-span-6 sm:col-span-4">
-
-                <label className="block text-left text-sm font-medium text-gray-700" style={{maxWidth:"300px"}}>
-                <span className="text-gray-700">Skills:</span>
-                 
-                  <Select isMulti onChange={handleChange}>
-                  <option value="choose" disabled selected="selected">
-                    -- Choose Skills --
-                  </option>
-                
-                  </Select>
-              
-                </label>
-              </div>
-
-              <div className="col-span-6 sm:col-span-4">
                 <label htmlFor="about" className="block text-sm font-medium text-gray-700"> About </label>
+                <p className="mt-2 text-sm text-gray-500">Brief description For your profile.</p>
                 <div className="mt-1">
-                  <textarea id="about" name="about" rows="3" className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com" 
+                  <textarea id="about" name="about" rows="3" 
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" 
+                      placeholder="you@example.com" 
+                      value={formState.about}
+                      onChange={handleChange}
                 ></textarea>
                 </div>
-                <p className="mt-2 text-sm text-gray-500">Brief description For your profile.</p>
               </div>
             </div>
 

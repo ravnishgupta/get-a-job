@@ -12,7 +12,7 @@ type User {
     hourlyRate: String
     github: String
     applications: [Projects]
-
+    about: String
 }
 
 input UserInput{
@@ -23,6 +23,7 @@ input UserInput{
   availableNow: Boolean!
   hourlyRate: String!
   gitHub: String!
+  about: String
 }
 
 type Skills {
